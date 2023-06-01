@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  ecomm-app:
+    image: weversoncelio/ecomm:1.0
+    container_name: ecomm-app
+    ports:
+      - 3000:3000
+    networks:
+      - ecomm-network
+
+  mongo-ecomm:
+    image: mongo:6.0
+    restart: always
+    container_name: mongo-ecomm
+    volumes:
+      - db-mongo-ecomm:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    ports:
+      - 27017:27017
+    networks:
+      - ecomm-network
+
+networks:
+  ecomm-network:
+    driver: bridge
+volumes:
+  db-mongo-ecomm:
+    external: true
+ 
+
+
+
+    
