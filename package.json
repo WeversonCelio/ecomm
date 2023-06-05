@@ -1,13 +1,16 @@
 {
     "name": "ecomm",
     "version": "1.0.0",
-    "description": "",
+    "description": "Ecomm é um projeto de ecommerce construído em partes para aplicar os conhecimentos em Node.JS, MongoDB e Docker",
     "main": "src/main.js",
+    "author": "weverson Celio",
+    "license": "MIT",
     "scripts": {
-      "start": "node src/main.js",
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node src/main.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "",
-    "license": "MIT"
-  }
-
+    "dependencies": {
+        "csvtojson": "^2.0.10",
+        "express": "^4.16.1"
+    }
+}
