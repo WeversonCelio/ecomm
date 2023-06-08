@@ -22,6 +22,8 @@ function buscarProdutos(itens) {
             const produto = db.products.findOne({ "slug": item.slug });
             const productId = produto._id;
             const precoUnitario = produto.preco;
+            const estoque = produto.estoque
+
             const quantidade = item.quantidade
 
             const pedido = { productId, precoUnitario, quantidade }
@@ -115,6 +117,3 @@ console.log(orders)
 const pedidosCliente4 = criarPedido("email", "teorfyol123@test.com", itens2)
 orders = db.orders.insertOne({ ...pedidosCliente4 })
 console.log(orders)
-
-
-export const funcaoCriarPedido = criarPedido

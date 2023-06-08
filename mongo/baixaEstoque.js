@@ -1,7 +1,6 @@
 use("ecomm")
 
- 
- export function baixarEstoque(productId, quantidadeSolicitada, quantidadeEstoque ){
+function baixarEstoque(productId, quantidadeSolicitada, quantidadeEstoque ){
  if(quantidadeSolicitada>quantidadeEstoque){
     throw new Error("quantidade no estoque insuficiente")
  }
@@ -11,3 +10,12 @@ use("ecomm")
 
 }
 
+
+//teste
+const produto = db.products.findOne({"nome":'Galaxy Tab S8'})
+const productId = produto._id
+const  quantidadeSolicitada = 2
+const quantidadeEstoque = produto.estoque
+
+
+baixarEstoque(productId, quantidadeSolicitada, quantidadeEstoque )
