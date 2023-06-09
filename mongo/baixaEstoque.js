@@ -1,21 +1,19 @@
 use("ecomm")
 
-function baixarEstoque(productId, quantidadeSolicitada, quantidadeEstoque ){
- if(quantidadeSolicitada>quantidadeEstoque){
-    throw new Error("quantidade no estoque insuficiente")
- }
- const novoEstoque =   quantidadeEstoque - quantidadeSolicitada
- query = db.products.updateOne({ "_id": productId }, {$set:{"estoque":novoEstoque}})
- console.log(novoEstoque, query)
-
+function baixarEstoque(nome, quantidadeSolicitada) {
+   return db.products.updateOne({
+      $and: [{
+         "nome": nome
+      }, {
+         estoque: {
+            $gte: quantidadeSolicitada
+         }
+      }]
+   }, {
+      $inc: {
+         "estoque": -quantidadeSolicitada
+      }
+   })
 }
-
-
-//teste
-const produto = db.products.findOne({"nome":'Galaxy Tab S8'})
-const productId = produto._id
-const  quantidadeSolicitada = 2
-const quantidadeEstoque = produto.estoque
-
-
-baixarEstoque(productId, quantidadeSolicitada, quantidadeEstoque )
+const operacao = baixarEstoque('Galaxy Tab S8', 2)
+console.log(operacao)
