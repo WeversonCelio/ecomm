@@ -1,0 +1,53 @@
+    [
+        {
+            "username": "Teor Fyol" ,
+            "email":  "teorfyol@test.com"  ,
+            "senha": "123456"   ,
+            "cpf":  "19287010005",
+            "telefone": "919999999999",
+            "endereco":{
+                "bairro": "Copas Verdes"  ,
+                "rua": "Rua Maria Nunes Coelho" ,
+                "numero":  "123" ,
+                "complemento": "Casa B" ,
+                "cep": "76901470" ,
+                "cidade":  "Ji-Paraná" ,
+                "uf":  "RO" 
+            
+            }
+        },
+        {
+            "username":"Jaepa Wabor" ,
+            "email": "jaepawabor@dominio.com"   ,
+            "senha": "156790"   ,
+            "cpf": "76853656008" ,
+            "telefone":"718888888888" ,
+            "endereco":{
+                "bairro": "Ceilândia Norte"  ,
+                "rua": "Quadra EQNO 10/12 Módulo B" ,
+                "numero": "145"  ,
+                "complemento":  "Proximo a escola",
+                "cep": "72255542" ,
+                "cidade": "Brasília"  ,
+                "uf":  "DF" 
+            
+            }
+        },
+        {
+            "username": "Lukerr Runan",
+            "email":   "lukerriunan@email.com" ,
+            "senha":   "95734451" ,
+            "cpf": "92952385084" ,
+            "telefone": "513948576481",
+            "endereco":{
+                "bairro":  "Abranches" ,
+                "rua":"Rua Augusto dos Anjos"  ,
+                "numero": "769"  ,
+                "complemento":  "Ao lado do Correios",
+                "cep":  "82220190",
+                "cidade":  "Curitiba" ,
+                "uf": "PR"
+            
+            }
+        }
+    ]
