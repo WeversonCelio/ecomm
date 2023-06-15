@@ -1,0 +1,54 @@
+{
+  "categories": [
+    {
+      "nome": "INFORMÁTICA",
+      "status": "ATIVA",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "nome": "BELEZA",
+      "status": "INATIVA"
+    },
+    {
+      "id": 3,
+      "nome": "CELULARES",
+      "status": "ATIVA"
+    },
+    {
+      "id": 4,
+      "nome": "MÓVEIS",
+      "status": "ATIVA"
+    },
+    {
+      "id": 5,
+      "nome": "LUXO",
+      "status": "INATIVA"
+    },
+    {
+      "id": 6,
+      "nome": "ESPORTE",
+      "status": "INATIVA"
+    },
+    {
+      "nome": "AUTOMÓVEIS",
+      "status": "ATIVA",
+      "id": 7
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 9
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 10
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 11
+    }
+  ]
+}
