@@ -20,7 +20,7 @@ export default class CategoryService {
         try {
             const response = await fetch(URL_SERVER, { method: "GET" });
             const listaDeCategorias = await response.json();
-            return { statusCode: 200, resultado: listaDeCategorias };
+            return { statusCode: response.status, resultado: listaDeCategorias };
 
         } catch (error) {
             return { statusCode: 500, resultado: (`Ocorreu um erro no servidor ${error}`) };
@@ -34,9 +34,9 @@ export default class CategoryService {
             const categoriaEncontrada = await response.json();
 
             return (!objetoEstaVazio(categoriaEncontrada) ? {
-                statusCode: 200, resultado: categoriaEncontrada
+                statusCode: response.status, resultado: categoriaEncontrada
             } : {
-                statusCode: 404, resultado: "categoria não encontrada"
+                statusCode: response.status, resultado: "categoria não encontrada"
             });
 
         } catch (error) {
@@ -54,10 +54,10 @@ export default class CategoryService {
                 headers: { "Content-type": "application/json; charset=UTF-8" }
             });
             const categoriaInserida = await response.json();
-            return { statusCode: 201, resultado: categoriaInserida };
+            return { statusCode: response.status, resultado: categoriaInserida };
 
         } catch (error) {
-            return { statusCode: 500, resultado: (`Ocorreu um erro no servidor ${error}`) };
+            return { statusCode: response.status, resultado: (`Ocorreu um erro no servidor ${error}`) };
         }
     }
 
@@ -65,7 +65,7 @@ export default class CategoryService {
     static async updateCategory(id, categoria) {
         const categoriaStatus = (await this.findCategoryById(id)).statusCode;
         if (categoriaStatus === 404) {
-            return { statusCode: 404, resultado: "categoria não encontrada" }
+            return { statusCode: categoriaStatus, resultado: "categoria não encontrada" }
         }
 
         const url = `${URL_SERVER}/${id}`;
@@ -77,7 +77,7 @@ export default class CategoryService {
             });
 
             const categoriaAtualidada = await response.json();
-            return { statusCode: 200, resultado: categoriaAtualidada };
+            return { statusCode: response.status, resultado: categoriaAtualidada };
 
         } catch (error) {
             return { statusCode: 500, resultado: (`Ocorreu um erro no servidor ${error}`) };
@@ -87,7 +87,7 @@ export default class CategoryService {
     static async deleteCategory(id) {
         const categoriaStatus = (await this.findCategoryById(id)).statusCode;
         if (categoriaStatus === 404) {
-            return { statusCode: 404, resultado: "categoria não encontrada" }
+            return { statusCode: categoriaStatus, resultado: "categoria não encontrada" }
         }
 
         const url = `${URL_SERVER}/${id}`;
@@ -97,7 +97,7 @@ export default class CategoryService {
             });
             const categoriaExcluida = await response.json();
 
-            return { statusCode: 200, resultado: categoriaExcluida };
+            return { statusCode: response.status, resultado: categoriaExcluida };
         } catch (error) {
             return { statusCode: 500, resultado: (`Ocorreu um erro no servidor ${error}`) };
         }
