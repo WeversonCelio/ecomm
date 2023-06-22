@@ -7,18 +7,23 @@
     "license": "MIT",
     "type": "module",
     "scripts": {
-        "start": "node src/main.js",
+        "dev": "nodemon server.js",
+        "start": "node server.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "cli": "node ./src/cli/cli.js",
         "lint": ".\\node_modules\\.bin\\eslint .",
         "lint:fix": "npx eslint --fix . "
     },
     "dependencies": {
-        "express": "^4.16.1"
+        "express": "^4.16.1",
+        "mongoose": "6.11.2"
     },
     "devDependencies": {
-        "eslint": "^8.42.0",
-        "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-plugin-import": "^2.27.5"
+        "@jest/globals": "^27.5.1",
+        "eslint": "^8.43.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.26.0",
+        "jest": "^25.0.0",
+        "nodemon": "^1.14.9"
     }
 }
