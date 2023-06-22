@@ -25,6 +25,37 @@ services:
     networks:
       - ecomm-network
 
+  swagger-ui-ecomm:
+    image: swaggerapi/swagger-ui
+    restart: always
+    container_name: swagger-ui-ecomm
+    volumes:
+      - type: bind
+        source: ./swagger
+        target: /foo
+    environment:
+      - SWAGGER_JSON=/foo/ecomm.yaml
+    ports:
+      - 8888:8080
+    networks:
+      - ecomm-network
+
+
+  swagger-editor-ecomm:
+    image: swaggerapi/swagger-editor
+    restart: always
+    container_name: swagger-editor-ecomm
+    volumes:
+      - type: bind
+        source: ./swagger
+        target: /tmp
+    environment:
+      - SWAGGER_FILE=/tmp/ecomm.yaml
+    ports:
+      - 8899:8080
+    networks:
+      - ecomm-network
+
 networks:
   ecomm-network:
     driver: bridge
@@ -35,4 +66,4 @@ volumes:
 
 
 
-    
+# docker run -d -p 8080:8080 -v C:\LABORATORIO\swagger:/tmp -e SWAGGER_FILE=/tmp/api-medico-20230614-1142 swaggerapi/swagger-editor

@@ -1,0 +1,158 @@
+{
+  "categories": [
+    {
+      "id": 3,
+      "nome": "CELULARES",
+      "status": "ATIVA"
+    },
+    {
+      "id": 4,
+      "nome": "MÓVEIS",
+      "status": "ATIVA"
+    },
+    {
+      "id": 5,
+      "nome": "LUXO",
+      "status": "INATIVA"
+    },
+    {
+      "id": 6,
+      "nome": "ESPORTE",
+      "status": "INATIVA"
+    },
+    {
+      "id": 7,
+      "nome": "string",
+      "status": "string"
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 9
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 12
+    },
+    {
+      "nome": "AUTOMÓVEIS",
+      "status": "ATIVA",
+      "id": 13
+    },
+    {
+      "id": 14,
+      "nome": "string",
+      "status": "string"
+    },
+    {
+      "id": 15,
+      "nome": "string",
+      "status": "string",
+      "apiId": "admin"
+    },
+    {
+      "id": 16,
+      "nome": "string",
+      "status": "string",
+      "apiId": "admin"
+    },
+    {
+      "id": 17,
+      "nome": "string",
+      "status": "string",
+      "apiId": "admin"
+    },
+    {
+      "id": 18,
+      "nome": "string",
+      "status": "string",
+      "apiId": "admin"
+    },
+    {
+      "id": 19,
+      "nome": "string",
+      "status": "string"
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 20
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 21
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 22
+    },
+    {
+      "id": 23,
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA"
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 24
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 25
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 26
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 27
+    },
+    {
+      "nome": "AUTOMÓVEIS",
+      "status": "ATIVA",
+      "id": 30
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 31
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 32
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 33
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 34
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 35
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 36
+    },
+    {
+      "nome": "VESTUÁRIO",
+      "status": "ATIVA",
+      "id": 37
+    }
+  ]
+}

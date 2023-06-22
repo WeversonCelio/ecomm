@@ -22,7 +22,6 @@ function buscarProdutos(itens) {
             const produto = db.products.findOne({ "slug": item.slug });
             const productId = produto._id;
             const precoUnitario = produto.preco;
-            const estoque = produto.estoque
 
             const quantidade = item.quantidade
 
