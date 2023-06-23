@@ -70,8 +70,6 @@ describe(`POST em  ${URN_ADMIN}`, () => {
 
 describe(`GET em  ${URN_PUBLICA}/:id`, () => {
   it('Deve retornar uma produto', async () => {
-    console.log(produtoResposta);
-    console.log(idResposta);
     const resposta = await request(app)
       .get(`${URN_PUBLICA}/${idResposta}`)
       .set('Accept', 'application/json')
@@ -82,8 +80,6 @@ describe(`GET em  ${URN_PUBLICA}/:id`, () => {
   });
 
   it('500 - Server Error em GET ID', async () => {
-    console.log(produtoResposta);
-    console.log(idResposta);
     await request(app)
       .get(`${URN_PUBLICA}/ABC123`)
       .expect(500);
@@ -151,8 +147,6 @@ describe('404 - NOT FOUND nas rotas', () => {
   });
 
   it('Deve retornar 404 - NOT FOUND em GET ID', async () => {
-    console.log(produtoResposta);
-    console.log(idResposta);
     await request(app)
       .get(`${URN_PUBLICA}/${idResposta}`)
       .expect(404);

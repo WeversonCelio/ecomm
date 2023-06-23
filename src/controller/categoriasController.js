@@ -30,8 +30,11 @@ class CategoriaController {
   };
 
   static cadastrarCategoria = async (req, res) => {
-    const categoria = new Categorias(req.body);
-
+    const resposta = {
+      ...req.body,
+      status: 'ATIVA',
+    };
+    const categoria = new Categorias(resposta);
     try {
       const categoriaSalva = await categoria.save();
       return res.status(201).json(categoriaSalva);

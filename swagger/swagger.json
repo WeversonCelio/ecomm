@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "localhost:3000/",
+      "url": "http://localhost:3000/",
       "description": "ECOMM"
     }
   ],
@@ -95,7 +95,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CategoriaConsulta"
+                "$ref": "#/components/schemas/CategoriaAlterada"
               }
             }
           }
@@ -124,7 +124,7 @@
         }
       }
     },
-    "/api/admin/categoria/{id}/ativar": {
+    "/api/admin/categories/ativar/{id}": {
       "parameters": [
         {
           "$ref": "#/components/parameters/id"
@@ -431,6 +431,19 @@
           }
         }
       },
+      "CategoriaAlterada": {
+        "type": "object",
+        "title": "Categorias",
+        "description": "categorias usadas em produtos",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
       "ProdutoInserido": {
         "type": "object",
         "description": "informacoes sobre os produtos",
@@ -444,13 +457,13 @@
           "slug": {
             "type": "string"
           },
-          "preco": {
+          "precoUnitario": {
             "type": "number"
           },
-          "estoque": {
+          "quantidadeEstoque": {
             "type": "integer"
           },
-          "idCategoria": {
+          "categoria": {
             "type": "string"
           }
         }
@@ -471,10 +484,10 @@
           "slug": {
             "type": "string"
           },
-          "preco": {
+          "precoUnitario": {
             "type": "number"
           },
-          "estoque": {
+          "quantidadeEstoque": {
             "type": "integer"
           },
           "categoria": {
@@ -708,7 +721,7 @@
         "name": "id",
         "in": "path",
         "schema": {
-          "type": "integer"
+          "type": "string"
         },
         "required": true
       }

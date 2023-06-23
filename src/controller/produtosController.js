@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/extensions */
 import Produtos from '../model/Produtos.js';
@@ -48,9 +47,8 @@ class ProdutoController {
       const produtoSalvo = await produto.save();
       return res.status(201).json(produtoSalvo);
     } catch (error) {
-      console.log(error._message);
       if (error._message === 'products validation failed') {
-        return res.status(400).json({ message: 'Falha no Validacao do Produto' });
+        return res.status(400).json({ message: `Falha no Validacao do Produto - ${error}` });
       }
       return res.status(500).json({ message: `Falha no Servidor: ${error.message}` });
     }

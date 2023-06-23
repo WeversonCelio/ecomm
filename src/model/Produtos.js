@@ -17,7 +17,7 @@ const produtoSchema = new mongoose.Schema({
   },
   precoUnitario: {
     type: mongoose.Types.Decimal128,
-    min: 0,
+    min: 0.01,
     required: true,
   },
   quantidadeEstoque: {

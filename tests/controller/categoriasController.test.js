@@ -35,7 +35,6 @@ describe(`GET em /api/categoria ${URN_PUBLICA}`, () => {
 
 const categoria = {
   nome: 'TESTE',
-  status: 'ATIVA',
 };
 
 let idResposta;
@@ -49,10 +48,12 @@ describe(`POST em  ${URN_ADMIN}`, () => {
 
     categoriaResposta = resposta.body;
     idResposta = resposta.body._id;
+    console.log(categoria);
+    console.log(categoriaResposta);
   });
 
   const categoriaIncompleta = {
-    nome: 'TESTE',
+    status: 'ATIVO',
   };
 
   it('Deve adicionar uma nova categoria', async () => {
@@ -65,8 +66,6 @@ describe(`POST em  ${URN_ADMIN}`, () => {
 
 describe(`GET em  ${URN_PUBLICA}/:id`, () => {
   it('Deve retornar uma categoria', async () => {
-    console.log(categoriaResposta);
-    console.log(idResposta);
     const resposta = await request(app)
       .get(`${URN_PUBLICA}/${idResposta}`)
       .set('Accept', 'application/json')
