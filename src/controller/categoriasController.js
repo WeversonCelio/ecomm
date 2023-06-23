@@ -4,12 +4,16 @@
 import Categorias from '../model/Categorias.js';
 
 class CategoriaController {
-  static listarCategoria = (_req, res) => {
-    Categorias.find(
-      (err, categorias) => (!err
-        ? res.status(200).json(categorias)
-        : res.status(500).send({ message: `Falha no Servidor: ${err.message}` })),
-    );
+  static listarCategoria = async (_req, res) => {
+    try {
+      const categorias = await Categorias.find();
+      if (!categorias) {
+        return res.status(404).send({ message: 'Produtos nao encontrado' });
+      }
+      return res.status(200).json(categorias);
+    } catch (err) {
+      return res.status(500).send({ message: `Falha no Servidor: ${err.message}` });
+    }
   };
 
   static listarCategoriaPorId = async (req, res) => {
@@ -25,16 +29,59 @@ class CategoriaController {
     }
   };
 
-  static cadastrarCategoria = (req, res) => {
+  static cadastrarCategoria = async (req, res) => {
     const categoria = new Categorias(req.body);
-    categoria.save((err) => {
-      if (!err) {
-        return res.status(201).json(categoria);
-      } if (err._message === 'categories validation failed') {
-        return res.status(400).json({ message: `Falha no Validacao da Categoria. ${err}` });
+
+    try {
+      const categoriaSalva = await categoria.save();
+      return res.status(201).json(categoriaSalva);
+    } catch (error) {
+      if (error._message === 'categories validation failed') {
+        return res.status(400).json({ message: 'Falha no Validacao da Categoria' });
       }
-      return res.status(500).json({ message: `Falha no Servidor: ${err.message}` });
-    });
+      return res.status(500).json({ message: `Falha no Servidor: ${error.message}` });
+    }
+  };
+
+  static atualizarCategoria = async (req, res) => {
+    const { id } = req.params;
+    const categoria = req.body;
+    try {
+      const categoriaRetorno = await Categorias.findByIdAndUpdate(id, { $set: categoria });
+      if (!categoriaRetorno) {
+        return res.status(404).send({ message: 'Categoria nao encontrada' });
+      }
+      return res.status(200).json({ message: ' Categoria atualizada' });
+    } catch (err) {
+      return res.status(500).send({ message: `Falha no Servidor: ${err.message}` });
+    }
+  };
+
+  static ativarCategoria = async (req, res) => {
+    const { id } = req.params;
+    const ativar = { status: 'ATIVA' };
+    try {
+      const categoriaRetorno = await Categorias.findByIdAndUpdate(id, { $set: ativar });
+      if (!categoriaRetorno) {
+        return res.status(404).send({ message: 'Categoria nao encontrada' });
+      }
+      return res.status(200).json({ message: 'Categoria ativada' });
+    } catch (err) {
+      return res.status(500).send({ message: `Falha no Servidor: ${err.message}` });
+    }
+  };
+
+  static excluirCategoria = async (req, res) => {
+    const { id } = req.params;
+    try {
+      const categoria = await Categorias.findByIdAndDelete(id);
+      if (!categoria) {
+        return res.status(404).send({ message: 'Categoria nao encontrada' });
+      }
+      return res.status(200).json({ message: 'Categoria removida' });
+    } catch (err) {
+      return res.status(500).send({ message: `Falha no Servidor: ${err.message}` });
+    }
   };
 }
 

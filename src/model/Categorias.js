@@ -8,7 +8,7 @@ const categoriaSchema = new mongoose.Schema({
   nome: {
     type: String,
     required: true,
-    match: /^[A-z][A-z)-9]{2,}/,
+    match: /^[A-z0-9- à-úÀ-Ú]{3,}/,
   },
   status: {
     type: String,
