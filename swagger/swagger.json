@@ -1,0 +1,717 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API ECOMM",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "localhost:3000/",
+      "description": "ECOMM"
+    }
+  ],
+  "paths": {
+    "/api/categories": {
+      "get": {
+        "tags": [
+          "categorias-acesso-publico"
+        ],
+        "summary": "recuperar todas as categorias",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoriaConsulta"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      }
+    },
+    "/api/categories/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "get": {
+        "tags": [
+          "categorias-acesso-publico"
+        ],
+        "summary": "consultar categoria por ID",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SucessoCategoria"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      }
+    },
+    "/api/admin/categories": {
+      "post": {
+        "tags": [
+          "categorias-acesso-admin"
+        ],
+        "summary": "criar nova categoria",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaInserida"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/SucessoCategoria"
+          }
+        }
+      }
+    },
+    "/api/admin/categories/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "put": {
+        "tags": [
+          "categorias-acesso-admin"
+        ],
+        "summary": "atualizar uma categoria",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriaConsulta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SucessoCategoria"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "categorias-acesso-admin"
+        ],
+        "summary": "deletar uma categoria",
+        "responses": {
+          "200": {
+            "description": "sucesso"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      }
+    },
+    "/api/admin/categoria/{id}/ativar": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "patch": {
+        "tags": [
+          "categorias-acesso-admin"
+        ],
+        "summary": "atualizar o status da categoria",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SucessoCategoria"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      }
+    },
+    "/api/products": {
+      "get": {
+        "tags": [
+          "produtos-acesso-publico"
+        ],
+        "summary": "recuperar todos produtos",
+        "responses": {
+          "200": {
+            "description": "sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProdutoConsulta"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      }
+    },
+    "/api/products/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "get": {
+        "tags": [
+          "produtos-acesso-publico"
+        ],
+        "summary": "consultar produto por ID",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SucessoProduto"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      }
+    },
+    "/api/admin/products": {
+      "post": {
+        "tags": [
+          "produtos-acesso-admin"
+        ],
+        "summary": "criar novo produto",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProdutoInserido"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/SucessoProduto"
+          }
+        }
+      }
+    },
+    "/api/admin/products/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "put": {
+        "tags": [
+          "produtos-acesso-admin"
+        ],
+        "summary": "atualizar um produto",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProdutoInserido"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SucessoProduto"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "produtos-acesso-admin"
+        ],
+        "summary": "deletar um produto",
+        "responses": {
+          "200": {
+            "description": "sucesso"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      }
+    },
+    "/api/accounts/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "get": {
+        "tags": [
+          "usuarios-acesso-publico"
+        ],
+        "summary": "consultar usuario por ID",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SucessoUsuario"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      }
+    },
+    "/api/admin/accounts": {
+      "get": {
+        "tags": [
+          "usuarios-acesso-admin"
+        ],
+        "summary": "recuperar todos usuarios",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SucessoUsuario"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "usuarios-acesso-admin"
+        ],
+        "summary": "criar novo usuario",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioInserido"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/SucessoUsuario"
+          }
+        }
+      }
+    },
+    "/api/admin/accounts/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "put": {
+        "tags": [
+          "usuarios-acesso-admin"
+        ],
+        "summary": "atualizar um usuario",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProdutoInserido"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SucessoUsuario"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "usuarios-acesso-admin"
+        ],
+        "summary": "deletar um usuario",
+        "responses": {
+          "200": {
+            "description": "sucesso"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      }
+    },
+    "/api/orders/{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "get": {
+        "tags": [
+          "pedidos-acesso-publico"
+        ],
+        "summary": "consultar pedidos por ID",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/SucessoPedido"
+          },
+          "404": {
+            "$ref": "#/components/responses/NaoEncontrado"
+          }
+        }
+      }
+    },
+    "/api/orders": {
+      "post": {
+        "tags": [
+          "pedidos-acesso-publico"
+        ],
+        "summary": "criar novo pedido",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PedidosInserido"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/SucessoPedido"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CategoriaInserida": {
+        "type": "object",
+        "title": "Categorias",
+        "description": "categorias usadas em produtos",
+        "properties": {
+          "nome": {
+            "type": "string"
+          }
+        }
+      },
+      "CategoriaConsulta": {
+        "type": "object",
+        "title": "Categorias",
+        "description": "categorias usadas em produtos",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "ProdutoInserido": {
+        "type": "object",
+        "description": "informacoes sobre os produtos",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "preco": {
+            "type": "number"
+          },
+          "estoque": {
+            "type": "integer"
+          },
+          "idCategoria": {
+            "type": "string"
+          }
+        }
+      },
+      "ProdutoConsulta": {
+        "type": "object",
+        "description": "informacoes sobre os produtos",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "preco": {
+            "type": "number"
+          },
+          "estoque": {
+            "type": "integer"
+          },
+          "categoria": {
+            "type": "string"
+          }
+        }
+      },
+      "Endereco": {
+        "type": "object",
+        "properties": {
+          "rua": {
+            "type": "string"
+          },
+          "numero": {
+            "type": "string"
+          },
+          "complemento": {
+            "type": "string"
+          },
+          "cep:": {
+            "type": "string"
+          },
+          "cidade": {
+            "type": "string"
+          },
+          "estado": {
+            "type": "string"
+          }
+        }
+      },
+      "UsuarioInserido": {
+        "type": "object",
+        "description": "dados cadastrais de um usuario",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          },
+          "cpf": {
+            "type": "string"
+          },
+          "telefone": {
+            "type": "string"
+          },
+          "endereco": {
+            "$ref": "#/components/schemas/Endereco"
+          }
+        }
+      },
+      "UsuarioConsulta": {
+        "type": "object",
+        "description": "dados cadastrais de um usuario",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "cpf": {
+            "type": "string"
+          },
+          "dataCriacao": {
+            "type": "string",
+            "format": "date"
+          },
+          "telefone": {
+            "type": "string"
+          },
+          "endereco": {
+            "$ref": "#/components/schemas/Endereco"
+          }
+        }
+      },
+      "ItemInserido": {
+        "description": "informacoes de itens de um pedido",
+        "type": "object",
+        "properties": {
+          "idProduto": {
+            "type": "string"
+          },
+          "quantidade": {
+            "type": "integer"
+          },
+          "precoUnitario": {
+            "type": "number"
+          },
+          "desconto": {
+            "type": "number"
+          }
+        }
+      },
+      "Item": {
+        "description": "informacoes de itens de um pedido",
+        "type": "object",
+        "properties": {
+          "idProduto": {
+            "type": "string"
+          },
+          "nomeProduto": {
+            "type": "string"
+          },
+          "quantidade": {
+            "type": "integer"
+          },
+          "precoUnitario": {
+            "type": "number"
+          },
+          "desconto": {
+            "type": "number"
+          }
+        }
+      },
+      "PedidosInserido": {
+        "description": "informacoes de um pedido",
+        "type": "object",
+        "properties": {
+          "idCliente": {
+            "type": "string"
+          },
+          "endereco_entrega": {
+            "$ref": "#/components/schemas/Endereco"
+          },
+          "pedidos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "item": {
+                  "$ref": "#/components/schemas/ItemInserido"
+                }
+              }
+            }
+          }
+        }
+      },
+      "PedidosConsulta": {
+        "description": "informacoes de um pedido",
+        "type": "object",
+        "properties": {
+          "idCliente": {
+            "type": "string"
+          },
+          "nomeCliente": {
+            "type": "string"
+          },
+          "telefoneCliente": {
+            "type": "string"
+          },
+          "endereco_entrega": {
+            "$ref": "#/components/schemas/Endereco"
+          },
+          "pedidos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "dataPedido": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "item": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "NaoEncontrado": {
+        "description": "Não Encontrado",
+        "content": {
+          "application/json": {
+            "example": "not Found"
+          }
+        }
+      },
+      "SucessoCategoria": {
+        "description": "sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CategoriaConsulta"
+            }
+          }
+        }
+      },
+      "SucessoProduto": {
+        "description": "sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ProdutoConsulta"
+            }
+          }
+        }
+      },
+      "SucessoUsuario": {
+        "description": "sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/UsuarioConsulta"
+            }
+          }
+        }
+      },
+      "SucessoPedido": {
+        "description": "sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PedidosConsulta"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "id": {
+        "name": "id",
+        "in": "path",
+        "schema": {
+          "type": "integer"
+        },
+        "required": true
+      }
+    }
+  }
+}

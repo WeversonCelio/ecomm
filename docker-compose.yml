@@ -1,13 +1,5 @@
 version: '3.9'
 services:
-  ecomm-app:
-    image: weversoncelio/ecomm:1.0
-    container_name: ecomm-app
-    ports:
-      - 3000:3000
-    networks:
-      - ecomm-network
-
   mongo-ecomm:
     image: mongo:6.0
     restart: always
@@ -24,37 +16,18 @@ services:
       - 27017:27017
     networks:
       - ecomm-network
-
-  swagger-ui-ecomm:
-    image: swaggerapi/swagger-ui
-    restart: always
-    container_name: swagger-ui-ecomm
-    volumes:
-      - type: bind
-        source: ./swagger
-        target: /foo
-    environment:
-      - SWAGGER_JSON=/foo/ecomm.yaml
+  ecomm-app:
+    image: weversoncelio/ecomm:1.1
+    container_name: ecomm-app
     ports:
-      - 8888:8080
+      - 3000:3000
+    environment:
+      - PORT=3000
+      - MONGO_SERVER=mongo-ecomm
     networks:
       - ecomm-network
-
-
-  swagger-editor-ecomm:
-    image: swaggerapi/swagger-editor
-    restart: always
-    container_name: swagger-editor-ecomm
-    volumes:
-      - type: bind
-        source: ./swagger
-        target: /tmp
-    environment:
-      - SWAGGER_FILE=/tmp/ecomm.yaml
-    ports:
-      - 8899:8080
-    networks:
-      - ecomm-network
+    depends_on:
+    - mongo-ecomm
 
 networks:
   ecomm-network:
@@ -62,8 +35,3 @@ networks:
 volumes:
   db-mongo-ecomm:
     external: true
- 
-
-
-
-# docker run -d -p 8080:8080 -v C:\LABORATORIO\swagger:/tmp -e SWAGGER_FILE=/tmp/api-medico-20230614-1142 swaggerapi/swagger-editor
