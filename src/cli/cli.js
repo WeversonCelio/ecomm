@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import fs from 'fs';
 // eslint-disable-next-line import/extensions
 import CategoryService from './CategoryService.js';

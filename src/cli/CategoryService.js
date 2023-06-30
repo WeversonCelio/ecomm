@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const URL_SERVER = 'http://127.0.0.1:3000/categories';
 
 function objetoEstaVazio(objeto) {
